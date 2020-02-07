@@ -39,3 +39,32 @@ To control the joint using a python script, I have provided with a simple publis
 rosrun foot_test main.py
 ```
 This will move the joint to 1.57 radians. You can choose a custom value by just changing the value of the variable 'position' in the python script.
+
+
+
+# How to use your own URDF model with this package ?
+After using sw2urdf plugin in your solidworks and creating the package for gazebo, you can replace your meshes and urdf files with the files provided in the directory as default and change the name in the launch file to specify your urdf file. You will need to make changes to your urdf file as the sw2urdf plugin doesn't add the gazebo tag and the transmission tag. 
+
+The gazebo tag that needs to be added at the end of your urdf script is as follows
+```
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/foot_test</robotNamespace>
+    </plugin>
+  </gazebo>
+```
+Now for the transmission tag, it can be added before or after the gazebo tag. The basic format is as follows:
+```
+<transmission name="{Give transmission name}">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="{Give your actuator name}">
+      <mechanicalReduction>2</mechanicalReduction>
+    </actuator>
+    <joint name="{Your joint's name to which this transmission is going to be attached}">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+```
+This transmission tag needs to be added for every joint. For clearer idea, I recommend looking at the urdf provided in the package.
+
+We also need to add controllers for the new joints. In this example, the joint type is revolute so I would recommend reading about different controller types to apply for your task. This is just an example for you to start from.  
