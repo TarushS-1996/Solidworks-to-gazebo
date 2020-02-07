@@ -55,7 +55,7 @@ The gazebo tag that needs to be added at the end of your urdf script is as follo
 ```
 Now for the transmission tag, it can be added before or after the gazebo tag. The basic format is as follows:
 ```
-<transmission name="{Give transmission name}">
+  <transmission name="{Give transmission name}">
     <type>transmission_interface/SimpleTransmission</type>
     <actuator name="{Give your actuator name}">
       <mechanicalReduction>2</mechanicalReduction>
@@ -63,7 +63,7 @@ Now for the transmission tag, it can be added before or after the gazebo tag. Th
     <joint name="{Your joint's name to which this transmission is going to be attached}">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
- </transmission>
+  </transmission>
 ```
 This transmission tag needs to be added for every joint. For clearer idea, I recommend looking at the urdf provided in the package.
 
