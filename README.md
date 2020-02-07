@@ -5,7 +5,7 @@ The package contains :\
  -> Solidworks assembly model.
  
  # Solidworks
- The file consists of the assembly of the servo motors, clamp and the end effector. This requires the; sw2urdf plugin to convert the solidworks to a gazebo based package. I will also be going over the conversion of the solidworks file into Gazebo package.
+ The file consists of the assembly of the servo motors, clamp and the end effector. This requires the; 'sw2urdf' plugin to convert the solidworks to a gazebo based package. I will also be going over the conversion of the solidworks file into Gazebo package.
  
   # Gazebo 
  The file consists of necessary launch files, controller files and python example script in the directories launch, config and scripts respectively. I will also be providing descriptions of the directories for better explanation. 
