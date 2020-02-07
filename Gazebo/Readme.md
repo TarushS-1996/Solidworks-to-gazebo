@@ -12,7 +12,7 @@ $ catkin_create_pkg foot_test rospy rviz controller_manager gazebo_ros joint_sta
 ```
 $ source ~/(Your catkin work space name)/devel/setup.bash
 ```
-**>** Pass the command. This will launch the model and the controllers for the joint.
+**>** Pass the command to launch the model and the controllers for the joint.
 ```
 $ roslaunch foot_test robot_and_controller.launch
 ```
