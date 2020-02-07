@@ -63,7 +63,7 @@ Now for the transmission tag, it can be added before or after the gazebo tag. Th
     <joint name="{Your joint's name to which this transmission is going to be attached}">
       <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     </joint>
-  </transmission>
+ </transmission>
 ```
 This transmission tag needs to be added for every joint. For clearer idea, I recommend looking at the urdf provided in the package.
 
