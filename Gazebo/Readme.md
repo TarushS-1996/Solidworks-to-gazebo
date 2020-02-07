@@ -1,6 +1,13 @@
 # Gazebo
 This file contains the entire package for running the example. 
 
+## Folder and it's content explained
+**config** - Contains the joint controller.\
+**launch** - Conmtains the launch file for the bot and it's controller.\
+**meshes** - Contains the stl files of the robot.\
+**scripts** - Contains a simple publisher script called 'main.py'.\
+**urdf** - Contains the Universal Robotic Description Format (URDF) file.
+
 # Setup
 **>** Create catkin workspace. (Note: You can follow these steps [here](http://wiki.ros.org/catkin/Tutorials/create_a_workspace) to make a catkin workspace.) \
 **>** In src folder, create catkin package called foot_test by using the command :
