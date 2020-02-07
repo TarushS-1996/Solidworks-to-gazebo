@@ -1,0 +1,17 @@
+<launch>
+  <param name="robot_description" command="cat $(find foot_test)/urdf/foot_test.urdf" />
+  <!-- Load joint Controller's config-->
+  
+  <rosparam file="$(find foot_test)/config/controller.yaml" command = "load"/>
+  
+  <!-- Load the controllers -->
+  
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/foot_test" args="joint1_position_controller joint_state_controller  --shutdown-timeout 3"/>
+  
+  <!-- Convert joint states to TF transform for RVIZ -->
+  
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+    <remap from="/joint_states" to="/foot_test/joint_states" />
+  </node>
+
+</launch>

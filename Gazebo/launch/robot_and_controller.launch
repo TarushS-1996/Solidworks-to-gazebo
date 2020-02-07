@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<launch>
+	<include file="$(find gazebo_ros)/launch/empty_world.launch" />
+	<param name="robot_description" textfile="$(find foot_test)/urdf/foot_test.urdf" />
+	<node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model foot_test -param robot_description " />
+	<param name="use_gui" value="true"/>
+	<rosparam file="$(find foot_test)/config/controller.yaml" command="load" ns="/foot_test" />
+	<node name="foot_test_controller_spawner" pkg="controller_manager" respawn="false" output="screen" type="spawner" ns="/foot_test" args="joint1_position_controller joint_state_controller" />
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+		<remap from="/joint_states" to="/foot_test/joint_states" />
+	</node>
+</launch>

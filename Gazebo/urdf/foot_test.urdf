@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.0-0-g9aa0fdb  Build Version: 1.5.7004.21443
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="foot_test">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.044249 0.021713 -0.018217"
+        rpy="0 0 0" />
+      <mass
+        value="0.040648" />
+      <inertia
+        ixx="8.2828E-06"
+        ixy="2.86E-07"
+        ixz="-1.2442E-07"
+        iyy="1.2413E-05"
+        iyz="-2.3284E-09"
+        izz="6.9622E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://foot_test/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://foot_test/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <link
+    name="Foot">
+    <inertial>
+      <origin
+        xyz="-0.031268 -0.023648 -0.0056268"
+        rpy="0 0 0" />
+      <mass
+        value="0.007226" />
+      <inertia
+        ixx="1.6958E-06"
+        ixy="9.9158E-13"
+        ixz="-1.1975E-12"
+        iyy="4.9266E-06"
+        iyz="-4.2316E-07"
+        izz="6.0987E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://foot_test/meshes/Foot.STL" />
+      </geometry>
+      <material
+        name="black">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://foot_test/meshes/Foot.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+
+  <joint
+    name="joint1"
+    type="revolute">
+    <origin
+      xyz="0.0076913 0.0078829 0.023225"
+      rpy="3.1416 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="Foot" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="0"
+      upper="1.57"
+      effort="0.16"
+      velocity="1.2" />
+    <dynamics
+      friction = "0.12"/>
+  </joint>
+
+  <transmission name="base_to_foot">
+    <type>transmission_interface/SimpleTransmission</type>
+    <actuator name="base_to_foot_act">
+      <mechanicalReduction>2</mechanicalReduction>
+    </actuator>
+    <joint name="joint1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+  </transmission>
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/foot_test</robotNamespace>
+    </plugin>
+  </gazebo>
+</robot>
