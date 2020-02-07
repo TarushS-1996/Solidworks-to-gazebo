@@ -32,3 +32,10 @@ it will show the list of publishable topics for the robot. In this we are gonna 
 rostopic pub -1 /foot_test/joint1_position_controller/command std_msgs/Float64 "data: 0.0"
 ```
 Where data is the angle (in radians) which you can specify to rotate the joint to. The limits of the joints are **0 to 1.57**.
+
+# Python Script
+To control the joint using a python script, I have provided with a simple publisher script in the scripts folder. It will publish the 'position' variable in the script. The default is set to 1.57 radians. To use python to control the joint, first launch the robot following the earlier steps and pass the command:
+```
+rosrun foot_test main.py
+```
+This will move the joint to 1.57 radians. You can choose a custom value by just changing the value of the variable 'position' in the python script.
