@@ -16,3 +16,12 @@ $ source ~/(Your catkin work space name)/devel/setup.bash
 ```
 $ roslaunch foot_test robot_and_controller.launch
 ```
+-> Open a **second terminal,** and if you pass the command :
+```
+$ rostopic list
+```
+it will show the list of publishable topics for the robot. In this we are gonna use the topic **/foot_test/joint1_position_controller/command** to publish angles to the joint by giving the command:
+```
+rostopic pub -1 /foot_test/joint1_position_controller/command std_msgs/Float64 "data: 0.0"
+```
+Where data is the angle (in radians) which you can specify to rotate the joint to. The limits of the joints are **0 to 1.57**.
