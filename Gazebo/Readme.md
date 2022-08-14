@@ -3,7 +3,7 @@ This file contains the entire package for running the example.
 
 ## Folder and it's content explained
 **config** - Contains the joint controller.\
-**launch** - Conmtains the launch file for the bot and it's controller.\
+**launch** - Contains the launch file for the bot and it's controller.\
 **meshes** - Contains the stl files of the robot.\
 **scripts** - Contains a simple publisher script called 'main.py'.\
 **urdf** - Contains the Universal Robotic Description Format (URDF) file.
